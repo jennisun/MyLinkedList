@@ -56,7 +56,7 @@ public class MyLinkedList{
   public String get(int index) throws IndexOutOfBoundsException {
     Node n = start;
     for (int i = 0; i < index; i ++) {
-      n = start.getNext();
+      n = n.getNext();
       if (n == null) throw new IndexOutOfBoundsException();
     }
     return n.getData();
@@ -65,7 +65,7 @@ public class MyLinkedList{
   public String set(int index, String value) throws IndexOutOfBoundsException {
     Node n = start;
     for (int i = 0; i < index; i ++) {
-      n = start.getNext();
+      n = n.getNext();
       if (n == null) throw new IndexOutOfBoundsException();
     }
 
