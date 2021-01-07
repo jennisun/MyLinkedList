@@ -75,10 +75,11 @@ public class MyLinkedList{
   }
 
   public String toString() {
+    if (size == 0) return "[]";
     String ans = "[";
     Node a = start;
     while (a != end) {
-      ans += a.getData() + ",";
+      ans += a.getData() + ", ";
       a = a.getNext();
     }
     return ans + a.getData() + "]";
