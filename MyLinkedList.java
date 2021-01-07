@@ -2,7 +2,9 @@ public class MyLinkedList{
   private int size;
   private Node start,end;
 
-  public MyLinkedList(){/*create a constructor*/}
+  public MyLinkedList(){
+    size = 0;
+  }
 
   public int size() {
     return size;
@@ -27,7 +29,9 @@ public class MyLinkedList{
 
   public void add(int index, String value) throws IndexOutOfBoundsException {
     if (index < 0 || index > size) throw new IndexOutOfBoundsException();
-    else if (index == size) add(value);
+    else if (index == size) {
+      add(value);
+    }
     else {
       Node n = start;
       for (int i = 0; i < index; i ++) {
@@ -35,16 +39,17 @@ public class MyLinkedList{
         if (n == null)  throw new IndexOutOfBoundsException();
       }
 
-    Node prev = n.getPrev();
-    Node next = n.getNext();
+      Node a = new Node(value);
 
-    Node a = new Node(value);
+      a.setPrev(n.getPrev());
+      a.setNext(n);
 
-    a.setPrev(n.getPrev());
-    a.setNext(n.getNext());
+      if (index > 0) n.getPrev().setNext(a);
+      else start = a;
 
-    prev.setNext(a);
-    next.setPrev(a);
+      n.setPrev(a);
+
+      size ++;
     }
   }
 
