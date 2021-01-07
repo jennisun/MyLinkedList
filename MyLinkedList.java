@@ -39,17 +39,16 @@ public class MyLinkedList{
     Node next = n.getNext();
 
     Node a = new Node(value);
-    
+
     a.setPrev(n.getPrev());
     a.setNext(n.getNext());
 
     prev.setNext(a);
     next.setPrev(a);
-
     }
   }
 
-  public String get(int index) {
+  public String get(int index) throws IndexOutOfBoundsException {
     Node n = start;
     for (int i = 0; i < index; i ++) {
       n = start.getNext();
@@ -57,7 +56,20 @@ public class MyLinkedList{
     }
     return n.getData();
   }
-  // public String set(int index, String value);
+
+  public String set(int index, String value) throws IndexOutOfBoundsException {
+    Node n = start;
+    for (int i = 0; i < index; i ++) {
+      n = start.getNext();
+      if (n == null) throw new IndexOutOfBoundsException();
+    }
+
+    String s = n.getData();
+    n.setData(value);
+    return s;
+  }
+
+
   // public String toString();
   // Any helper method that returns a Node object MUST BE PRIVATE!
 }
