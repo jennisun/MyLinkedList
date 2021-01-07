@@ -84,5 +84,53 @@ public class MyLinkedList{
     }
     return ans + a.getData() + "]";
   }
+
+  public String remove(int index) throws IndexOutOfBoundsException {
+    if (index < 0 || index > size || size == 0) throw new IndexOutOfBoundsException();
+    else if (size == 1) {
+      set(0, "null");
+      size = 0;
+    }
+    else {
+      if (index == 0) {
+        start = start.getNext();
+      }
+      else if (index == size) {
+        end = end.getPrev();
+      }
+      else {
+        Node n = start;
+        for (int i = 0; i < index; i ++) {
+          n = n.getNext();
+          if (n == null)  throw new IndexOutOfBoundsException();
+        }
+        n.getPrev().setNext(n.getNext());
+        n.getNext().setPrev(n.getPrev());
+      }
+      size --;
+    }
+    return "FIX THIS LATER";
+  }
+
+
+  // public void extend(MyLinkedList other) throws IndexOutOfBoundsException {
+  //   if (index < 0 || index > size || size == 0) throw new IndexOutOfBoundsException();
+  //   this.end.setNext(other.start);
+  //   other.start.setPrev(this.end);
+  //   size += other.size();
+  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
   // Any helper method that returns a Node object MUST BE PRIVATE!
 }
