@@ -128,6 +128,18 @@ public class MyLinkedList{
   }
 
 
+  public String toStringReversed() {
+    if (size == 0) return "[]";
+    String ans = "[";
+    Node a = end;
+    while (a != start) {
+      ans += a.getData() + ", ";
+      a = a.getPrev();
+    }
+    return ans + a.getData() + "]";
+  }
+
+
 
 
 
