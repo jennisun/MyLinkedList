@@ -117,8 +117,13 @@ public class MyLinkedList{
     if (size == 0 || other.size() == 0) throw new IndexOutOfBoundsException();
     else {
       end.setNext(other.start);
+      this.end = other.end;
       other.start.setPrev(this.end);
       size += other.size();
+
+      Node n = new Node("");
+      other.start = n;
+      other.end = n;
     }
   }
 
