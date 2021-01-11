@@ -113,8 +113,29 @@ public class MyLinkedList{
   }
 
 
-  public void extend(MyLinkedList other) throws IndexOutOfBoundsException {
-    if (size == 0 || other.size() == 0) throw new IndexOutOfBoundsException();
+  public void extend(MyLinkedList other) {
+    if (other.size == 0) {
+      Node n = new Node("");
+      other.start = n;
+      other.end = n;
+      other.size = 0;
+    }
+    else if (this.size == 0) {
+      add("placeholder");
+
+      end.setNext(other.start);
+      this.end = other.end;
+      other.start.setPrev(this.end);
+      size += other.size();
+
+      Node n = new Node("");
+      other.start = n;
+      other.end = n;
+      other.size = 0;
+
+      remove(0);
+    }
+
     else {
       end.setNext(other.start);
       this.end = other.end;
@@ -124,6 +145,7 @@ public class MyLinkedList{
       Node n = new Node("");
       other.start = n;
       other.end = n;
+      other.size = 0;
     }
   }
 
@@ -138,18 +160,6 @@ public class MyLinkedList{
     }
     return ans + a.getData() + "]";
   }
-
-
-
-
-
-
-
-
-
-
-
-
 
   // Any helper method that returns a Node object MUST BE PRIVATE!
 }
