@@ -86,16 +86,20 @@ public class MyLinkedList{
   }
 
   public String remove(int index) throws IndexOutOfBoundsException {
+    String ans = "";
     if (index < 0 || index >= size || size == 0) throw new IndexOutOfBoundsException();
     else if (size == 1) {
+      ans = get(0);
       set(0, "null");
       size = 0;
     }
     else {
       if (index == 0) {
+        ans = start.getData();
         start = start.getNext();
       }
       else if (index == size - 1) {
+        ans = end.getData();
         end = end.getPrev();
       }
       else {
@@ -104,12 +108,13 @@ public class MyLinkedList{
           n = n.getNext();
           if (n == null)  throw new IndexOutOfBoundsException();
         }
+        ans = n.getData();
         n.getPrev().setNext(n.getNext());
         n.getNext().setPrev(n.getPrev());
       }
       size --;
     }
-    return "FIX THIS LATER";
+    return ans;
   }
 
 
