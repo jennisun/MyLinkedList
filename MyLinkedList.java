@@ -86,7 +86,7 @@ public class MyLinkedList{
   }
 
   public String remove(int index) throws IndexOutOfBoundsException {
-    if (index < 0 || index > size || size == 0) throw new IndexOutOfBoundsException();
+    if (index < 0 || index >= size || size == 0) throw new IndexOutOfBoundsException();
     else if (size == 1) {
       set(0, "null");
       size = 0;
@@ -95,7 +95,7 @@ public class MyLinkedList{
       if (index == 0) {
         start = start.getNext();
       }
-      else if (index == size) {
+      else if (index == size - 1) {
         end = end.getPrev();
       }
       else {
@@ -113,12 +113,14 @@ public class MyLinkedList{
   }
 
 
-  // public void extend(MyLinkedList other) throws IndexOutOfBoundsException {
-  //   if (index < 0 || index > size || size == 0) throw new IndexOutOfBoundsException();
-  //   this.end.setNext(other.start);
-  //   other.start.setPrev(this.end);
-  //   size += other.size();
-  // }
+  public void extend(MyLinkedList other) throws IndexOutOfBoundsException {
+    if (size == 0 || other.size() == 0) throw new IndexOutOfBoundsException();
+    else {
+      end.setNext(other.start);
+      other.start.setPrev(this.end);
+      size += other.size();
+    }
+  }
 
 
 
